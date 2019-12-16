@@ -1,0 +1,22 @@
+{
+  "name": "personalproject",
+  "version": "1.0.0",
+  "description": "Personal Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanRead/music-project.git"
+  },
+  "author": "Alan Read",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanRead/music-project/issues"
+  },
+  "homepage": "https://github.com/AlanRead/music-project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
