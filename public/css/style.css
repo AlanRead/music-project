@@ -122,30 +122,6 @@
     width:60%;
   }
 
-.topnav {
-  background-color: #5fbae9;
-  overflow: hidden;
-}
-
-.topnavsignin {
-  background-color: #5fbae9;
-  overflow: hidden;
-  padding: 26.5px;
-}
-
-.topnav a {
-  float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #39ace7;
-}
-
 h2 {
   text-align: center;
   font-size: 18px;

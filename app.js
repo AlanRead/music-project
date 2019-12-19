@@ -4,6 +4,7 @@ const app = express();
 
 const Users = require ('./src/Users');
 const User = require ('./src/User');
+const url = require('url');
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -30,7 +31,7 @@ app.get('/', function (req, res) {
 
 /**
  * Post back to login page after creating a new account
- * Posts error if username already exists
+ * Shows error if username already exists
  */
 app.post('/', function(req, res) {
     let username = req.body.username;
@@ -67,6 +68,7 @@ app.get('/create', function (req, res) {
 app.post ('/main', function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
+    console.log(username);
     let user = app.users.getUserByName(username);
     let error1 = "Username does not exist";
     let error2 = "Username or password is incorrect";
@@ -81,10 +83,30 @@ app.post ('/main', function(req, res) {
         })
     } else {
         res.render('main', {
-            username: username
+            lines: 1
         });
     }
 })
+
+app.get('/main', function (req, res) {
+    var u = url.parse(req.url, true);
+    //var param = getparams(u.search.substr(1));
+    //console.log(u.query["lines"]);
+    res.render ('main', {
+        lines: u.query["lines"]
+    });
+})
+
+/*function getparams(paramString) {
+    let params = {};
+    let splitParam = paramString.split('&');
+    for(var i = 0; i < splitParam.length; i ++) {
+        let equalSplit = splitParam[i].split('=');
+        params[equalSplit[0]] =  equalSplit[1];
+    }
+    console.log(params);
+    return params;
+}*/
 
 /**
  * Logs that the server started
