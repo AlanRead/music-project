@@ -88,25 +88,15 @@ app.post ('/main', function(req, res) {
     }
 })
 
+/**
+ * Loads users setting input from the side bar
+ */
 app.get('/main', function (req, res) {
     var u = url.parse(req.url, true);
-    //var param = getparams(u.search.substr(1));
-    //console.log(u.query["lines"]);
     res.render ('main', {
         lines: u.query["lines"]
     });
 })
-
-/*function getparams(paramString) {
-    let params = {};
-    let splitParam = paramString.split('&');
-    for(var i = 0; i < splitParam.length; i ++) {
-        let equalSplit = splitParam[i].split('=');
-        params[equalSplit[0]] =  equalSplit[1];
-    }
-    console.log(params);
-    return params;
-}*/
 
 /**
  * Logs that the server started
