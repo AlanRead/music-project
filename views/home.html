@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="css/navbar.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Logout </a>
+        <a href="/songs">Saved Songs</a>
+        <a href="/home">Home</a>
+    </div>
+    <div class="sheet">
+        <h1>Write a New Song!</h1>
+        <div id="userInput">
+            <form id=options action="/build" method="GET">
+                <h6 style="text-align: center;">Song Name</h6>
+                <input type="text" id="songname" name="songname" placeholder="Enter song name here">
+                <h6 style="text-align: center;">Number of lines?</h6>
+                <input type="text" id="lines" name="lines" placeholder="Enter number of lines here">
+                <input type="submit" value="Create">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -62,13 +62,19 @@ app.get('/create', function (req, res) {
 })
 
 /**
- * Loads the main page
+ * Loads the home page
+ */
+app.get('/home', function(req, res) {
+    res.render('home')
+})
+
+/**
+ * Loads the home page
  * Checks if the username and password is correct
  */
-app.post ('/main', function(req, res) {
+app.post ('/home', function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
-    console.log(username);
     let user = app.users.getUserByName(username);
     let error1 = "Username does not exist";
     let error2 = "Username or password is incorrect";
@@ -82,20 +88,33 @@ app.post ('/main', function(req, res) {
             error: error2
         })
     } else {
-        res.render('main', {
-            lines: 1
-        });
+        res.render('home')
     }
 })
 
 /**
- * Loads users setting input from the side bar
+ * Loads users setting input from the home page
  */
-app.get('/main', function (req, res) {
-    var u = url.parse(req.url, true);
-    res.render ('main', {
+app.get('/build', function (req, res) {
+    let u = url.parse(req.url, true);
+    res.render ('build', {
         lines: u.query["lines"]
     });
+})
+
+/**
+ * Loads the songs page
+ */
+app.get('/songs', function (req, res) {
+    res.render ('songs')
+})
+
+/**
+ * Saves the song and loads the save song page
+ */
+app.post('/songs', function (req, res) {
+    let text = req.body.song;
+    res.render('songs')
 })
 
 /**

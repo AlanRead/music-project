@@ -22,6 +22,18 @@
     border-color: #000000;
     border-style: solid;
   }
+
+  #userInput {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    padding: 0px;
+    text-align: center;
+  }
   
   .sidebar {
     background-color: #1aa5eb;
@@ -60,11 +72,20 @@
     background-color: #56baed;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 80px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    margin-left: 20%;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+  }
+
+  .songsave {
+    align-items: right;
+    text-align: right;
+    float: right;
+    position: relative;
   }
