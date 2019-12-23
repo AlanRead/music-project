@@ -104,12 +104,24 @@ app.post ('/home', function(req, res) {
  */
 app.get('/build', function (req, res) {
     let u = url.parse(req.url, true);
-    console.log(u.query["songname"]);
     res.render ('build', {
         username: u.query["username"],
         songname: u.query["songname"],
-        lines: u.query["lines"]
+        lines: u.query["lines"],
+        sheet: ""
     });
+})
+
+app.post('/build', function (req, res) {
+    let username = req.body.username;
+    let songname = req.body.song;
+    let user = app.users.getUserByName(username);
+    res.render ('build', {
+        sheet: user.getSheet(songname),
+        username: username,
+        lines: 0,
+        songname: songname
+    })
 })
 
 /**
@@ -120,7 +132,6 @@ app.get('/songs', function (req, res) {
     let username = u.query["username"];
     let user = app.users.getUserByName(username);
     let songname = user.getSongs();
-    //songs.key1 = "";
     res.render ('songs', {
         username: username,
         song: songname
@@ -137,7 +148,7 @@ app.post('/songs', function (req, res) {
     let user = app.users.getUserByName(username);
     user.addSong(songname, sheet);
 
-    //store the sheet music in the data structure, only display the name of the song
+    //store the sheet music in a dictionary, only display the name of the song
     res.render('songs', {
         username: username,
         song: songname

@@ -15,18 +15,12 @@
         <a href="/home?username=<%=username%>">Home</a>
     </div>
     <div class="sheet">
-        <!--<div class="sidebar">
-            <form id=options action="/main" method="GET">
-                <h6 style="text-align: center;">How many lines?</h6>
-                <input type="text" id="lines" name="lines">
-                <input type="submit" value="Setup">
-            </form>
-        </div>-->
         <div id="sheetContent">
             <form id=save action="/songs" method="POST">
                 <input type="hidden" name="username" value="<%=username%>"" >
                 <input type="hidden" name="songname" value="<%=songname%>"" >
                 <textarea id="song" name="song" cols="95" rows="30">
+                    <%= sheet %>
                     <% for (var i = 0; i < lines; i ++) { %>
                         |----------------------------------|----------------------------------|----------------------------------| 
                         |----------------------------------|----------------------------------|----------------------------------|  

@@ -35,4 +35,8 @@ User.prototype.addSong = function (name, sheet) {
     this.currentSongs.addNameAndSong(name, sheet);
 }
 
+User.prototype.getSheet = function (name) {
+    return this.currentSongs.getSheetFromSong (name);
+}
+
 module.exports = User;

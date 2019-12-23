@@ -7,7 +7,7 @@ function Songs(){
  * Gets the sheet music based on the song name
  * @param {} song The song name
  */
-function getSheetFromSong (song) {
+Songs.prototype.getSheetFromSong = function (song) {
     return this.songs[song];
 }
 
@@ -17,7 +17,7 @@ function getSheetFromSong (song) {
  * @param {} name Name of the song
  * @param {} sheet The actual music the user wrote
  */
-function addNameAndSong (name, sheet) {
+Songs.prototype.addNameAndSong = function(name, sheet) {
     this.songs[name] = sheet;
 }
 

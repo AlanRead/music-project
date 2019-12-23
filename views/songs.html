@@ -13,6 +13,9 @@
         <a>Saved Songs</a>
         <a href="/home?username=<%=username%>">Home</a>
     </div>
-    <%=song %>
+    <form id=load action="/build" method="POST">
+        <input type="hidden" value="<%= username %>" name="username">
+        <input type="submit" value="<%=song %>" name="song">
+    </form>
 </body>
 </html>
