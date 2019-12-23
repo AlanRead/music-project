@@ -9,9 +9,10 @@
 </head>
 <body>
     <div class="topnav">
-        <a href="/">Logout </a>
-        <a href="/songs">Saved Songs</a>
-        <a href="/home">Home</a>
+        <a href="/">Logout [<%= username %>]</a>
+        <a>Saved Songs</a>
+        <a href="/home?username=<%=username%>">Home</a>
     </div>
+    <%=song %>
 </body>
 </html>

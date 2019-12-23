@@ -4,6 +4,7 @@ const app = express();
 
 const Users = require ('./src/Users');
 const User = require ('./src/User');
+const Songs = require('./src/Songs');
 const url = require('url');
 
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +38,8 @@ app.post('/', function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
     let error = "";
-    app.user = new User (username, password, []);
+    app.song = new Songs ();
+    app.user = new User (username, password, app.song);
     if(!app.users.alreadyExists(username)) {
         app.users.addUser(app.user);
         res.render('login', {
@@ -65,7 +67,10 @@ app.get('/create', function (req, res) {
  * Loads the home page
  */
 app.get('/home', function(req, res) {
-    res.render('home')
+    let u = url.parse(req.url, true);
+    res.render('home', {
+        username: u.query["username"]
+    })
 })
 
 /**
@@ -88,7 +93,9 @@ app.post ('/home', function(req, res) {
             error: error2
         })
     } else {
-        res.render('home')
+        res.render('home', {
+            username: username
+        })
     }
 })
 
@@ -97,24 +104,44 @@ app.post ('/home', function(req, res) {
  */
 app.get('/build', function (req, res) {
     let u = url.parse(req.url, true);
+    console.log(u.query["songname"]);
     res.render ('build', {
+        username: u.query["username"],
+        songname: u.query["songname"],
         lines: u.query["lines"]
     });
 })
 
 /**
- * Loads the songs page
+ * Loads the songs page and accesses the users current songs
  */
 app.get('/songs', function (req, res) {
-    res.render ('songs')
+    let u = url.parse(req.url, true);
+    let username = u.query["username"];
+    let user = app.users.getUserByName(username);
+    let songname = user.getSongs();
+    //songs.key1 = "";
+    res.render ('songs', {
+        username: username,
+        song: songname
+    })
 })
 
 /**
  * Saves the song and loads the save song page
  */
 app.post('/songs', function (req, res) {
-    let text = req.body.song;
-    res.render('songs')
+    let username = req.body.username;
+    let songname = req.body.songname;
+    let sheet = req.body.song;
+    let user = app.users.getUserByName(username);
+    user.addSong(songname, sheet);
+
+    //store the sheet music in the data structure, only display the name of the song
+    res.render('songs', {
+        username: username,
+        song: songname
+    })
 })
 
 /**

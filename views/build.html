@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="topnav">
-        <a href="/">Logout </a>
+        <a href="/">Logout [<%= username %>]</a>
         <a href="/songs">Saved Songs</a>
-        <a href="/home">Home</a>
+        <a href="/home?username=<%=username%>">Home</a>
     </div>
     <div class="sheet">
         <!--<div class="sidebar">
@@ -24,6 +24,8 @@
         </div>-->
         <div id="sheetContent">
             <form id=save action="/songs" method="POST">
+                <input type="hidden" name="username" value="<%=username%>"" >
+                <input type="hidden" name="songname" value="<%=songname%>"" >
                 <textarea id="song" name="song" cols="95" rows="30">
                     <% for (var i = 0; i < lines; i ++) { %>
                         |----------------------------------|----------------------------------|----------------------------------| 
